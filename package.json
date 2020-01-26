@@ -8,7 +8,7 @@
     "build": "webpack",
     "dev": "webpack-dev-server",
     "test": "jest --detectOpenHandles --runInBand --forceExit",
-    "test-watch": "jest --detectOpenHandles --runInBand --forceExit --watch"
+    "test-watch": "jest --detectOpenHandles --runInBand --forceExit --watchAll"
   },
   "author": "rated223",
   "license": "ISC",
