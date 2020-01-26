@@ -13,9 +13,12 @@
   "dependencies": {
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-dates": "^21.7.0",
     "react-dom": "^16.12.0",
     "react-modal": "^3.11.1",
     "react-redux": "^7.1.3",
