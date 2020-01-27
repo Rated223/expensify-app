@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "serve": "live-server public/",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev": "webpack-dev-server",
     "test": "jest --detectOpenHandles --runInBand --forceExit",
-    "test-watch": "jest --detectOpenHandles --runInBand --forceExit --watchAll"
+    "test-watch": "jest --detectOpenHandles --runInBand --forceExit --watchAll",
+    "heroku-postbuild": "npm run build:prod"
   },
   "author": "rated223",
   "license": "ISC",
