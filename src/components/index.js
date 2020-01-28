@@ -8,6 +8,7 @@ import Header from './Header';
 import HelpPage from './HelpPage';
 import NotFoundPage from './NotFoundPage';
 import ExpenseForm from './ExpenseForm';
+import ExpensesTotal from './ExpensesTotal';
 
 export {
   AddExpensePage,
@@ -19,5 +20,6 @@ export {
   Header,
   HelpPage,
   NotFoundPage,
-  ExpenseForm
+  ExpenseForm,
+  ExpensesTotal
 }
