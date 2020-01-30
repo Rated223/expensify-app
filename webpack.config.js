@@ -1,10 +1,18 @@
+const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const dotenv = require('dotenv');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
+
+  const envVars = dotenv.config().parsed;
+  const envKeys = Object.keys(envVars).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(envVars[next]);
+    return prev;
+  }, {});
 
   return {
     entry: './src/app.js',
@@ -53,6 +61,7 @@ module.exports = (env) => {
         filename: 'styles/styles.css',
         ignoreOrder: false, // Enable to remove warnings about conflicting order
       }),
+      new webpack.DefinePlugin(envKeys)
     ],
     optimization: {
       minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
