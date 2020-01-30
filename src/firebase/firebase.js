@@ -15,28 +15,4 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-const expensesSubscription = database.ref('expenses').on('value', (snapshot) => {
-  const expenses = [];
-  snapshot.forEach((childSnapshot) => {
-    expenses.push({
-      id: childSnapshot.key,
-      ...childSnapshot.val()
-    })
-  })
-
-  console.log('expenses', expenses);
-}, (e) => {
-  console.error("error: ", e);
-});
-
-const removeExpensesSubscription = database.ref('expenses').on('child_removed', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
-
-const changeExpensesSubscription = database.ref('expenses').on('child_changed', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
-
-const addExpensesSubscription = database.ref('expenses').on('child_added', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+export { firebase, database as default }
