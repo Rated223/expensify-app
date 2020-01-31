@@ -15,7 +15,15 @@ module.exports = (env) => {
       return prev;
     }, {});
   } else {
-
+    envKeys = {
+      'process.env.FB_API_KEY': JSON.stringify(process.env.FB_API_KEY),
+      'process.env.FB_AUTH_DOMAIN': JSON.stringify(process.env.FB_AUTH_DOMAIN),
+      'process.env.FB_DB_URL': JSON.stringify(process.env.FB_DB_URL),
+      'process.env.FB_PROJECT_ID': JSON.stringify(process.env.FB_PROJECT_ID),
+      'process.env.FB_BUCKET': JSON.stringify(process.env.FB_BUCKET),
+      'process.env.FB_SENDER_ID': JSON.stringify(process.env.FB_SENDER_ID),
+      'process.env.FB_APP_ID': JSON.stringify(process.env.FB_APP_ID)
+    }
   }
 
 
