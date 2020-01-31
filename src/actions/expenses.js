@@ -41,9 +41,37 @@ const editExpense = ({ id, update }) => ({
   update
 });
 
+const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+});
+
+const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses').once('value')
+    .then((snapshot) => {
+      const expenses = [];
+
+      snapshot.forEach((child) => {
+        expenses.push({
+          id: child.key,
+          ...child.val()
+        });
+      });
+
+      dispatch(setExpenses(expenses));
+    })
+    .catch((err) => {
+      console.error('firebase ', err);
+    })
+  }
+}
+
 export {
   addExpense,
   startAddExpense,
   removeExpense,
-  editExpense
+  editExpense,
+  setExpenses,
+  startSetExpenses
 }
