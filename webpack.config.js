@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 module.exports = (env) => {
   const isProduction = env === 'production';
   let envKeys = {}
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     const envVars = dotenv.config({ path: './config/dev.env' }).parsed;
     envKeys = Object.keys(envVars).reduce((prev, next) => {
       prev[`process.env.${next}`] = JSON.stringify(envVars[next]);
