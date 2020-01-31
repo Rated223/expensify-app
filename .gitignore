@@ -4,5 +4,5 @@ package-lock.json
 public/js/
 public/styles/
 public/bundle.js
-
+config/
 .env
