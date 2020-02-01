@@ -99,6 +99,26 @@ test('Should set up remove expense action object', () => {
   });
 });
 
+test('Should remove expense from database and store', (done) => {
+  const store = createMockStore({expenses});
+
+  const expenseId = store.getState().expenses[0].id;
+
+  store.dispatch(expensesActions.startRemoveExpense({id: expenseId}))
+  .then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toStrictEqual({
+      type: 'REMOVE_EXPENSE',
+      id: expenseId
+    });
+    return database.ref(`expenses/${expenseId}`).once('value');
+  }).then((expense) => {
+    expect(expense.val()).toBe(null);
+    done();
+  })
+
+});
+
 test('should setup set expenses action object with data', () => {
   const action = expensesActions.setExpenses(expenses);
   expect(action).toStrictEqual({

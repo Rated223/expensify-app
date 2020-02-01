@@ -10,7 +10,7 @@ export class EditExpensePage extends React.Component {
   }
 
   onClick = () => {
-    this.props.removeExpense({ id: this.props.expense.id })
+    this.props.startRemoveExpense({ id: this.props.expense.id })
     this.props.history.push('/');
   }
 
@@ -37,7 +37,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => ({
   editExpense: ({ id, expense }) => dispatch(expensesActions.editExpense({ id, update: expense })),
-  removeExpense: ({ id }) => dispatch(expensesActions.removeExpense({ id }))
+  startRemoveExpense: ({ id }) => dispatch(expensesActions.startRemoveExpense({ id }))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
