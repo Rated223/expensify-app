@@ -65,9 +65,7 @@ module.exports = (env) => {
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback:{
-        index:'/public/index.html'
-      },
+      historyApiFallback: true,
     },
     plugins: [
       new MiniCssExtractPlugin({
