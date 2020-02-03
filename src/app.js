@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { expensesActions, filtersActions } from './actions';
-import { getVisibleExpenses } from './selectors';
+import { expensesActions, authActions } from './actions';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import { firebase } from './firebase/firebase';
@@ -29,6 +28,7 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    store.dispatch(authActions.login(user.uid));
     store.dispatch(expensesActions.startSetExpenses())
     .then(() => {
       renderApp();
@@ -37,6 +37,7 @@ firebase.auth().onAuthStateChanged((user) => {
       }
     });
   } else {
+    store.dispatch(authActions.logout());
     renderApp();
     history.push('/');
   }

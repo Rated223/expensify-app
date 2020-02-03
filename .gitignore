@@ -5,4 +5,5 @@ public/js/
 public/styles/
 public/bundle.js
 config/
+src/store/configureStoreDev.js
 .env
