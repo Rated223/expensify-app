@@ -5,7 +5,6 @@ import ExpenseList from './ExpenseList';
 import ExpenseListItem from './ExpenseListItem';
 import ExpenseListFilters from "./ExpenseListFilters";
 import Header from './Header';
-import HelpPage from './HelpPage';
 import NotFoundPage from './NotFoundPage';
 import ExpenseForm from './ExpenseForm';
 import ExpensesTotal from './ExpensesTotal';
@@ -19,7 +18,6 @@ export {
   ExpenseListItem,
   ExpenseListFilters,
   Header,
-  HelpPage,
   NotFoundPage,
   ExpenseForm,
   ExpensesTotal,
