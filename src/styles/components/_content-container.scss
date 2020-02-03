@@ -1,0 +1,11 @@
+.content-container {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 0 $m-size;
+
+  &__left {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 $s-size 0;
+  }
+}

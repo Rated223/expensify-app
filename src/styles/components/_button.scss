@@ -1,0 +1,22 @@
+.button {
+  $self: &;
+  color: white;
+  background-color: $blue;
+  border: 0;
+  font-size: $font-size-large;
+  padding: $s-size;
+  font-weight: 300;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+  
+  &--no-bg {
+    @extend .button;
+    background: none;
+  }
+
+  &--secondary {
+    @extend .button;
+    background: $red;
+  }
+}

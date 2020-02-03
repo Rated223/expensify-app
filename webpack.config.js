@@ -60,6 +60,9 @@ module.exports = (env) => {
             }
           }
         ]
+      }, {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       }]
     },
     devtool: isProduction ? 'source-map' : 'inline-source-map',
