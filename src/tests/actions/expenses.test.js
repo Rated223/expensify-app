@@ -90,6 +90,40 @@ test('Should update a expense', () => {
   })
 });
 
+test('Should update a expense in the database', (done) => {
+  const store = createMockStore({expenses});
+  const expense = store.getState().expenses[0];
+  const update = {
+    description: 'new Edit description'
+  }
+
+  store.dispatch(expensesActions.startEditExpense({
+    id: expense.id, 
+    update 
+  }))
+  .then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toStrictEqual({
+      type: 'EDIT_EXPENSE',
+      id: expense.id,
+      update
+
+    })
+    return database.ref(`expenses/${expense.id}`).once('value');
+  })
+  .then((editExpense) => {
+    const {description, note, amount, createdAt} = expense;
+    expect(editExpense.val()).toEqual({
+      description,
+      note,
+      amount,
+      createdAt,
+      ...update
+    });
+    done();
+  })
+})
+
 test('Should set up remove expense action object', () => {
   const action = expensesActions.removeExpense({ id: "123abc" });
 
@@ -101,7 +135,6 @@ test('Should set up remove expense action object', () => {
 
 test('Should remove expense from database and store', (done) => {
   const store = createMockStore({expenses});
-
   const expenseId = store.getState().expenses[0].id;
 
   store.dispatch(expensesActions.startRemoveExpense({id: expenseId}))
@@ -112,7 +145,8 @@ test('Should remove expense from database and store', (done) => {
       id: expenseId
     });
     return database.ref(`expenses/${expenseId}`).once('value');
-  }).then((expense) => {
+  })
+  .then((expense) => {
     expect(expense.val()).toBe(null);
     done();
   })

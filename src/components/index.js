@@ -9,6 +9,7 @@ import HelpPage from './HelpPage';
 import NotFoundPage from './NotFoundPage';
 import ExpenseForm from './ExpenseForm';
 import ExpensesTotal from './ExpensesTotal';
+import LoginPage from './LoginPage';
 
 export {
   AddExpensePage,
@@ -21,5 +22,6 @@ export {
   HelpPage,
   NotFoundPage,
   ExpenseForm,
-  ExpensesTotal
+  ExpensesTotal,
+  LoginPage
 }

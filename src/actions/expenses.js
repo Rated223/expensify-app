@@ -38,7 +38,7 @@ const startRemoveExpense = ({ id }) => {
   return (dispatch) => {
     return database.ref(`expenses/${id}`).remove()
     .then(() => {
-      dispatch(removeExpense({ id }))
+      dispatch(removeExpense({ id }));
     })
     .catch((err) => {
       console.error('firebase ', err);
@@ -51,6 +51,17 @@ const editExpense = ({ id, update }) => ({
   id,
   update
 });
+
+const startEditExpense = ({  id, update }) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${id}`).update({...update})
+    .then(() => {
+      dispatch(editExpense({ id, update }));
+    }).catch((err) => {
+      console.error('firebase ', err);
+    })
+  }
+}
 
 const setExpenses = (expenses) => ({
   type: 'SET_EXPENSES',
@@ -84,6 +95,7 @@ export {
   removeExpense,
   startRemoveExpense,
   editExpense,
+  startEditExpense,
   setExpenses,
   startSetExpenses
 }

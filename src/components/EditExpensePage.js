@@ -5,7 +5,7 @@ import { expensesActions } from "../actions";
 
 export class EditExpensePage extends React.Component {
   onSubmit = (expense) => {
-    this.props.editExpense({ id: this.props.expense.id, expense })
+    this.props.startEditExpense({ id: this.props.expense.id, expense })
     this.props.history.push('/');
   }
 
@@ -36,7 +36,7 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  editExpense: ({ id, expense }) => dispatch(expensesActions.editExpense({ id, update: expense })),
+  startEditExpense: ({ id, expense }) => dispatch(expensesActions.startEditExpense({ id, update: expense })),
   startRemoveExpense: ({ id }) => dispatch(expensesActions.startRemoveExpense({ id }))
 })
 
